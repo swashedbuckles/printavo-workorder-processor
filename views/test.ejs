@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">🔄 Workorder Processor</a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/">Process</a>
+                <a class="nav-link active" href="/test">Test</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container test-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="mb-4"><%= pageTitle %></h1>
+                    <p class="text-muted mb-4"><%= subtitle %></p>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">🔍 Test Scraper</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="testForm">
+                                <div class="mb-3">
+                                    <label for="workorderUrl" class="form-label">Workorder or Invoice URL</label>
+                                    <input type="url" class="form-control" id="workorderUrl" required
+                                           placeholder="https://customer-shop.printavo.com/work_orders/abc123... or .../invoice/abc123...">
+                                    <div class="form-text">
+                                        <strong>Example URLs:</strong><br>
+                                        • https://model-citizen-brand-provisions.printavo.com/work_orders/68f503de509b3a260070a7b003f0f09a<br>
+                                        • https://armadillo.printavo.com/invoice/970f2fac2b7cc91f95de5fd5a4a3c37f
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="testBtn">
+                                    🚀 Test Scraper
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div id="resultsSection" style="display: none;">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">📊 Scraping Results</h5>
+                                <button class="btn btn-sm btn-outline-secondary" onclick="copyToClipboard()">
+                                    📋 Copy JSON
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <!-- Analysis Section -->
+                                <div id="analysisSection" class="analysis-section"></div>
+                                
+                                <!-- Recommendations Section -->
+                                <div id="recommendationsSection"></div>
+                                
+                                <!-- Raw Data Section -->
+                                <h6>🔍 Extracted Data:</h6>
+                                <div class="json-output">
+                                    <pre id="jsonOutput"></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container text-center text-muted">
+            <small>
+                Workorder Processor - Convert customer workorders into your Printavo account
+                <br>
+                <a href="https://github.com/yourusername/printavo-workorder-processor" target="_blank" class="text-decoration-none">
+                    📚 Documentation
+                </a>
+            </small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/app.js"></script>
+</body>
+</html>

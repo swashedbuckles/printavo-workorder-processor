@@ -1,0 +1,110 @@
+/* public/styles.css */
+
+/* Main Layout */
+.main-container { 
+    max-width: 800px; 
+    margin-top: 50px; 
+}
+
+.test-container { 
+    max-width: 1000px; 
+    margin-top: 30px; 
+}
+
+/* Form Styling */
+.form-label { 
+    font-weight: 600; 
+}
+
+.spinner-border { 
+    width: 1rem; 
+    height: 1rem; 
+}
+
+/* Progress Bars */
+.progress { 
+    height: 25px; 
+    margin: 20px 0; 
+}
+
+/* Results */
+.result-section { 
+    margin-top: 30px; 
+}
+
+.extracted-data { 
+    background: #f8f9fa; 
+    padding: 15px; 
+    border-radius: 5px; 
+}
+
+.analysis-section { 
+    margin: 20px 0; 
+}
+
+.badge { 
+    margin-right: 5px; 
+}
+
+/* JSON Output */
+.json-output { 
+    background: #f8f9fa; 
+    border: 1px solid #dee2e6; 
+    border-radius: 5px; 
+    padding: 15px; 
+    max-height: 600px; 
+    overflow-y: auto; 
+}
+
+pre { 
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
+    margin: 0; 
+}
+
+/* Recommendations */
+.recommendation { 
+    margin: 5px 0; 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+}
+
+.recommendation.success { 
+    background: #d1edff; 
+    border-left: 4px solid #28a745; 
+}
+
+.recommendation.warning { 
+    background: #fff3cd; 
+    border-left: 4px solid #ffc107; 
+}
+
+.recommendation.error { 
+    background: #f8d7da; 
+    border-left: 4px solid #dc3545; 
+}
+
+.recommendation.info { 
+    background: #d1ecf1; 
+    border-left: 4px solid #17a2b8; 
+}
+
+/* Alerts */
+.alert { 
+    margin-top: 20px; 
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
