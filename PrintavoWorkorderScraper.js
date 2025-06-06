@@ -33,6 +33,19 @@ class PrintavoWorkorderScraper {
       // Wait for content to load (Printavo uses JS rendering)
       await page.waitForTimeout(3000);
 
+      // Inject helper functions into the browser context
+      await page.evaluate(() => {
+        window.extractNumber = function(text) {
+          const match = text.replace(/[^0-9]/g, '');
+          return parseInt(match) || 0;
+        };
+        
+        window.extractPrice = function(text) {
+          const match = text.match(/[0-9]+\.?[0-9]*/);
+          return match ? parseFloat(match[0]) : 0;
+        };
+      });
+
       const workorderData = await page.evaluate(() => {
         // Helper function to safely extract text
         const getText = (selector) => {
@@ -135,8 +148,8 @@ class PrintavoWorkorderScraper {
               if (cells.length >= 3) { // Minimum columns needed
                 const item = {
                   description: cells[0]?.textContent?.trim() || '',
-                  quantity: this.extractNumber(cells[1]?.textContent || '0'),
-                  unitPrice: this.extractPrice(cells[2]?.textContent || '0'),
+                  quantity: window.extractNumber(cells[1]?.textContent || '0'),
+                  unitPrice: window.extractPrice(cells[2]?.textContent || '0'),
                   color: '',
                   sizes: {}
                 };
@@ -162,8 +175,8 @@ class PrintavoWorkorderScraper {
           const itemDivs = document.querySelectorAll('.line-item, .item, .product-line');
           itemDivs.forEach(div => {
             const description = getText(div.querySelector('.description, .item-name, .product-name') || div);
-            const quantity = this.extractNumber(getText(div.querySelector('.quantity, .qty')));
-            const price = this.extractPrice(getText(div.querySelector('.price, .unit-price, .cost')));
+            const quantity = window.extractNumber(getText(div.querySelector('.quantity, .qty')));
+            const price = window.extractPrice(getText(div.querySelector('.price, .unit-price, .cost')));
             
             if (description) {
               lineItems.push({
