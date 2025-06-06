@@ -1,0 +1,35 @@
+{
+  "name": "printavo-workorder-processor",
+  "version": "1.0.0",
+  "description": "Convert customer workorders to your Printavo account",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^21.0.0",
+    "axios": "^1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "printavo",
+    "workorder",
+    "print-shop",
+    "automation",
+    "web-scraping"
+  ],
+  "author": "Tom Joseph",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swashedbuckles/printavo-workorder-processor"
+  }
+}
